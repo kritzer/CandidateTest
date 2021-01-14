@@ -21,14 +21,14 @@ public class User {
     private Long id;
 
     @Column(unique = true)
-    @NotNull
+    @NotNull(message = "Email Cannot Be null")
     private String email;
 
     @Column(unique = true)
-    @NotNull
+    @NotNull(message = "Username Cannot Be null")
     private String username;
     
-    @NotNull
+    @NotNull(message = "Password Cannot Be null")
     private String password;
 
 }
