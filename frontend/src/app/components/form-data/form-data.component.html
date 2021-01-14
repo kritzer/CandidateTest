@@ -1,0 +1,34 @@
+<div  class="mx-auto" style="padding: 5%;">
+  <mat-card-title fxLayoutAlign="center">กรุณาระบุข้อมูลของคุณให้ครบ</mat-card-title>
+  <br>
+  <div class="container">
+    <form role="form" #formData="ngForm" (submit)="onSubmit(formData.value)">
+          <div class="form-group">
+            <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
+              <mat-label>ชื่อ</mat-label>
+              <input matInput placeholder="ระบุชื่อของคุณ" [(ngModel)]="formdata.fname" name="fname">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
+              <mat-label>นามสกุล</mat-label>
+              <input matInput placeholder="ระบุนามสกุลของคุณ" [(ngModel)]="formdata.lname" name="lname">
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
+              <mat-label>อายุ</mat-label>
+              <input matInput type="number" placeholder="ระบุอายุของคุณ" [(ngModel)]="formdata.age" name="age">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
+              <mat-label>งาน</mat-label>
+              <input matInput  placeholder="ระบุงานของคุณ" [(ngModel)]="formdata.job" name="job">
+            </mat-form-field>
+          </div>
+        <mat-card-actions>
+          <button class="btn btn-primary" type="submit"> ตกลง </button>
+        </mat-card-actions>
+      </form>
+  </div>
+
+</div>
