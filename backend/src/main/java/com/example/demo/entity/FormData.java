@@ -19,15 +19,14 @@ public class FormData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Form_SEQ")
     private Long id;
 
-    @NotNull
+    @NotNull(message = "FirstName Must not be null")
     private String firstName;
 
-    @NotNull
+    @NotNull(message = "LastName Must not be null")
     private String lastName;
 
-    @NotNull
     private int age;
 
-    @NotNull
+    @NotNull(message = "Job Must not be null")
     private String job;
 }
