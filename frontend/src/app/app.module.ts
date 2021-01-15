@@ -1,3 +1,4 @@
+import { LoginModule } from './page/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
