@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="mx-auto" style="padding: 10%;">
+    <mat-card-title>
+      กรุณาเข้าสู่ระบบ
+    </mat-card-title>
+    <form role="form" #loginForm="ngForm" (submit)="login(loginForm.value)">
+      <div style="max-width:50%;">
+        <div>
+          <label>Username or Email</label>
+        </div>
+        <div>
+          <input type="text" maxlength="16" class="form-control" [(ngModel)]="loginData.username" name="username" value="">
+        </div>
+        <div>
+            <label>Password</label>
+          </div>
+          <div>
+            <input type="password" class="form-control" [(ngModel)]="loginData.password" name="password" value="">
+          </div>
+          <br>
+          <mat-action-row>
+              <button class="btn btn-sm btn-success" style="border: aliceblue;" type="submit">Login</button>
+          </mat-action-row>
+      </div>
+    </form>
+  </mat-card>
+</div>

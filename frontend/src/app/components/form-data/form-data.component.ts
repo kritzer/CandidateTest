@@ -28,6 +28,12 @@ snackbar = true;
       );
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
 }
 class FormData {
   fname: string;
