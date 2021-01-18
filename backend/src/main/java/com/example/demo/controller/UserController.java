@@ -8,7 +8,6 @@ import com.example.demo.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +23,7 @@ public class UserController {
         return userRepo.findAll();
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public User getCheck(@RequestParam(name = "username" ) String username,@RequestParam(name = "password") String password){
         return userRepo.findCheck(username, password);
     }
