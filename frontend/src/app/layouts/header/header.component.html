@@ -1,5 +1,21 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Kritzer</span>
+    <span>{{title | uppercase}}</span>
+    <div flxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <a mat-button (click)="addFormData()" target="_blank">เพิ่มฟอร์ม</a>
+        </li>
+        <li>
+          <a mat-button (click)="viewFormData()" target="_blank">แสดงฟอร์มทั้งหมด</a>
+        </li>
+        <li>
+              <button mat-button (click)="logout()">
+                  <mat-icon>exit_to_app</mat-icon>
+                  Log out
+              </button>
+        </li>
+      </ul>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

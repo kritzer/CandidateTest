@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { ViewFormDataComponent } from './view-form-data.component';
+import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -15,6 +12,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -26,8 +24,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -44,16 +44,20 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { RouterModule } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent
+    ViewFormDataComponent
   ],
   imports: [
     CommonModule,
+    LayoutsModule,
     MatCardModule,
     FlexLayoutModule,
     A11yModule,
@@ -99,10 +103,8 @@ import { MatTreeModule } from '@angular/material/tree';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent
+    FormsModule,
+    RouterModule
   ]
 })
-export class LayoutsModule { }
+export class ViewFormDataModule { }

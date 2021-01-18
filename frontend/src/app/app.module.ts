@@ -8,11 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './page/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewFormDataModule } from './page/view-form-data/view-form-data.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     HomeModule,
+    ViewFormDataModule,
     LoginModule
   ],
   providers: [],

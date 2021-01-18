@@ -12,10 +12,10 @@ export class AuthGuardService {
   constructor(
     private authService: AuthService,
     private router: Router) {}
-  // กำนหนด guard ในส่วนของการใช้งานกับ  canActivate
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('canActivate run');
     let url: string = state.url;
+    console.log(this.checkLogin(url));
     return this.checkLogin(url);
   }
 
@@ -25,7 +25,7 @@ export class AuthGuardService {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+    if (localStorage.getItem('userData') !== null) { return true; }
     this.authService.redirectUrl = url;
     this.router.navigate(['/login']);
     return false;

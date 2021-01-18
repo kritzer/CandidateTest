@@ -45,10 +45,10 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormDataComponent } from 'src/app/components/form-data/form-data.component';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { HomeComponent } from './home.component';
 import { FormsModule } from '@angular/forms';
+import { FormDataComponent } from 'src/app/components/form-data/form-data.component';
 
 @NgModule({
   declarations: [
