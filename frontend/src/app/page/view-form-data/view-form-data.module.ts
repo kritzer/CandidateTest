@@ -48,6 +48,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -104,6 +105,7 @@ import { RouterModule } from '@angular/router';
     PortalModule,
     ScrollingModule,
     FormsModule,
+    Ng2SearchPipeModule,
     RouterModule
   ]
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Userinfo } from 'src/app/model/userinfo';
 import { FormDataService } from 'src/app/services/form-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ViewFormDataComponent implements OnInit {
   title = 'ALL FORM DATA';
   formData: Userinfo[] = [];
+  search: string;
   constructor(private fdts: FormDataService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
