@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Userinfo } from 'src/app/model/userinfo';
 import { FormDataService } from 'src/app/services/form-data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-view-form-data',
@@ -10,7 +12,7 @@ import { FormDataService } from 'src/app/services/form-data.service';
 export class ViewFormDataComponent implements OnInit {
   title = 'ALL FORM DATA';
   formData: Userinfo[] = [];
-  constructor(private fdts: FormDataService) { }
+  constructor(private fdts: FormDataService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getFormData();
@@ -21,5 +23,12 @@ export class ViewFormDataComponent implements OnInit {
       console.log(this.formData);
     });
   }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
+    });
+  }
+
 }
 

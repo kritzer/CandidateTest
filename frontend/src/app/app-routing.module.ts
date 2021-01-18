@@ -22,7 +22,7 @@ const routes: Routes = [{
       component: ViewFormDataComponent,
       canActivate: [AuthGuard],
     },
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'viewFormData' }
 ];
 
 @NgModule({

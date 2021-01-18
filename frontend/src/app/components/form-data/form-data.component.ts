@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormDataService } from 'src/app/services/form-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +15,8 @@ formdata: FormData;
 str: string;
 snackbar = true;
   constructor(private fdts: FormDataService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private router: Router) {
 
   }
   ngOnInit(): void {
@@ -24,15 +26,27 @@ snackbar = true;
   onSubmit(form) {
     this.str = 'ค่าจากฟอร์ม: ' + JSON.stringify(this.formdata);
     this.fdts.addFormData(form).subscribe( data => {
-      console.log(this.str);    }
+      this.openSnackBar('บันทึกสำเร็จ', 'ปิด');
+      this.router.navigate(['/viewFormData']);
+    }, error => {
+        this.openSnackBar('บันทึกไม่สำเร็จ', 'ปิด');
+        this.resetForm();
+        console.log(error.message);
+      }
       );
   }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 5000,
     });
   }
+  resetForm() {
+    this.formdata.fname = null;
+    this.formdata.lname = null;
+    this.formdata.age = null;
+    this.formdata.job = null;
+ }
 
 }
 class FormData {
