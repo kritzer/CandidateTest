@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  failed = 'กรุณาระบุข้อมูลให้ครบถ้วน';
+  close = 'ปิด';
   loginData: LoginData;
   constructor(private auth: AuthService,
               private snackBar: MatSnackBar,
@@ -19,7 +21,15 @@ export class LoginComponent implements OnInit {
     this.checklogin();
   }
   login(loginData) {
-      this.auth.login(loginData);
+    if (loginData.username) {
+      if (loginData.password) {
+        this.auth.login(loginData);
+      } else {
+        this.openSnackBar(this.failed, this.close);
+      }
+    } else {
+      this.openSnackBar(this.failed, this.close);
+    }
   }
   resetForm() {
     this.loginData.username = null;
