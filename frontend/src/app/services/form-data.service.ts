@@ -15,8 +15,8 @@ export class FormDataService {
     return this.http.get(this.API + '/getAllForm');
   }
 
-  getByLastNameOrFirstName(lastName, firstName): Observable<any> {
-    return this.http.get(this.API + '/getByLastNameOrFirstName?lastName=' + lastName + '&firstName=' + firstName);
+  getByText(text): Observable<any> {
+    return this.http.get(this.API + '/search?text=' + text);
   }
 
   addFormData(formData): Observable<any> {
