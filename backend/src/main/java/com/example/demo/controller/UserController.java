@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
-    
+
     @Autowired
     private UserRepo userRepo;
 
     @GetMapping("/getAllUser")
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         return userRepo.findAll();
     }
 
     @GetMapping("/login")
-    public User getCheck(@RequestParam(name = "username" ) String username,@RequestParam(name = "password") String password){
+    public User getCheck(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
         return userRepo.findCheck(username, password);
     }
 }
