@@ -18,8 +18,22 @@ public class FormTestDataLoader implements ApplicationRunner {
         FormData newForm = new FormData();
         newForm.setFirstName("Kritsada");
         newForm.setLastName("Patchima");
-        newForm.setAge(23);
+        newForm.setAge("23");
         newForm.setJob("ว่างงาน");
         formRepo.save(newForm);
+
+        FormData newForm2 = new FormData();
+        newForm2.setFirstName("Asahina");
+        newForm2.setLastName("Patchima");
+        newForm2.setAge("12");
+        newForm2.setJob("Maid");
+        formRepo.save(newForm2);
+
+        FormData newForm3 = new FormData();
+        newForm3.setFirstName("xMen");
+        newForm3.setLastName("YGirl");
+        newForm3.setAge("19");
+        newForm3.setJob("Student");
+        formRepo.save(newForm3);
     }
 }
