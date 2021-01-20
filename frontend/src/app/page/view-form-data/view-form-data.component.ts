@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserInfo } from 'src/app/model/UserInfo';
 import { FormDataService } from 'src/app/services/form-data.service';
 
@@ -10,10 +11,14 @@ import { FormDataService } from 'src/app/services/form-data.service';
 export class ViewFormDataComponent implements OnInit {
   title = 'ALL FORM DATA';
   formData: UserInfo[] = [];
-  @Input() search: string = '';
+  search = '';
   newValue: string ;
   searchTitle = 'ค้นหาด้วย ชื่อ หรือ นามสกุล เท่านั้น';
-  constructor(private formDataService: FormDataService) { }
+  message = 'ไม่พบข้อมูล';
+  close = 'ปิด';
+  constructor(private formDataService: FormDataService,
+              private snackBar: MatSnackBar,
+    ) { }
 
   ngOnInit(): void {
     this.searchFormData();
@@ -25,34 +30,40 @@ export class ViewFormDataComponent implements OnInit {
   }
   searchFormData() {
     this.newValue = this.search;
-    if (this.newValue === '') {
+    if (this.newValue === '' || this.newValue === null) {
       this.getFormData();
     } else {
-      this.getFormByFirstName(this.newValue);
+      this.getSearch(this.newValue);
     }
   }
-  getFormByFirstName(newValue) {
-    this.formDataService.getByLastNameOrFirstName('', newValue).subscribe( res => {
+  getSearch(newValue) {
+    this.formDataService.getByText(newValue).subscribe( res => {
       if (res && res.length) {
         this.formData = [];
         this.formData = res as UserInfo[];
       } else {
-        this.getFormByLastName(newValue);
+        this.openSnackBar(this.message, this.close);
+        // this.getFormByLastName(newValue);
       }
     });
   }
-  getFormByLastName(newValue) {
-    this.formDataService.getByLastNameOrFirstName(newValue, '').subscribe( res => {
-      if (res && res.length) {
-        this.formData = [];
-        this.formData = res as UserInfo[];
-      }
+  // getFormByLastName(newValue) {
+  //   this.formDataService.getByLastNameOrFirstName(newValue, '').subscribe( res => {
+  //     if (res && res.length) {
+  //       this.formData = [];
+  //       this.formData = res as UserInfo[];
+  //     }
+  //   });
+  // }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
     });
   }
   keyInput(value: string) {
-    if (value) {
+
         this.search = value;
-    }
+
 }
 
 }
