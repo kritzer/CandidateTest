@@ -29,9 +29,8 @@ snackbar = true;
       this.openSnackBar('บันทึกสำเร็จ', 'ปิด');
       this.router.navigate(['/viewFormData']);
     }, error => {
-        this.openSnackBar('บันทึกไม่สำเร็จ', 'ปิด');
+        this.openSnackBar(error.message, 'ปิด');
         this.resetForm();
-        console.log(error.message);
       }
       );
   }

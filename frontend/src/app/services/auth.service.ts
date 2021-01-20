@@ -17,9 +17,7 @@ export class AuthService {
 
   login(loginData): void {
       this.http.get(this.API + '/login?username=' + loginData.username + '&password=' + loginData.password ).subscribe( data => {
-        console.log(data);
         if (data !== null) {
-          console.log('Success');
           localStorage.setItem('userData', JSON.stringify(data));
           this.openSnackBar('เข้าสู่ระบบสำเร็จ', 'ปิด');
           this.router.navigate(['']);
