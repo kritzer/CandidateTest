@@ -1,7 +1,7 @@
 <div  class="mx-auto" style="padding: 5%;">
   <mat-card-title fxLayoutAlign="center">Add FormData</mat-card-title>
   <br>
-  <div class="container">
+  <div class="container" style="width: 100%;" fxLayout.gt-lg>
     <form role="form" #formData="ngForm" (submit)="onSubmit(formData.value)">
           <div class="form-group">
             <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">

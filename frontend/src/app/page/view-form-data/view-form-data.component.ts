@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Userinfo } from 'src/app/model/userinfo';
+import { UserInfo } from 'src/app/model/UserInfo';
 import { FormDataService } from 'src/app/services/form-data.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 
 @Component({
   selector: 'app-view-form-data',
@@ -11,25 +9,51 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ViewFormDataComponent implements OnInit {
   title = 'ALL FORM DATA';
-  formData: Userinfo[] = [];
-  search: string;
-  constructor(private fdts: FormDataService, private snackBar: MatSnackBar) { }
+  formData: UserInfo[] = [];
+  @Input() search: string = '';
+  newValue: string ;
+  searchTitle = 'ค้นหาด้วย ชื่อ หรือ นามสกุล เท่านั้น';
+  constructor(private formDataService: FormDataService) { }
 
   ngOnInit(): void {
-    this.getFormData();
+    this.searchFormData();
   }
   getFormData() {
-    this.fdts.getAllFormData().subscribe( data => {
-      this.formData = data as Userinfo[];
-      console.log(this.formData);
+    this.formDataService.getAllFormData().subscribe( data => {
+      this.formData = data as UserInfo[];
     });
   }
-
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 5000,
+  searchFormData() {
+    this.newValue = this.search;
+    if (this.newValue === '') {
+      this.getFormData();
+    } else {
+      this.getFormByFirstName(this.newValue);
+    }
+  }
+  getFormByFirstName(newValue) {
+    this.formDataService.getByLastNameOrFirstName('', newValue).subscribe( res => {
+      if (res && res.length) {
+        this.formData = [];
+        this.formData = res as UserInfo[];
+      } else {
+        this.getFormByLastName(newValue);
+      }
     });
   }
+  getFormByLastName(newValue) {
+    this.formDataService.getByLastNameOrFirstName(newValue, '').subscribe( res => {
+      if (res && res.length) {
+        this.formData = [];
+        this.formData = res as UserInfo[];
+      }
+    });
+  }
+  keyInput(value: string) {
+    if (value) {
+        this.search = value;
+    }
+}
 
 }
 

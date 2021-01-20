@@ -13,14 +13,11 @@ export class AuthGuardService {
     private authService: AuthService,
     private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log('canActivate run');
     let url: string = state.url;
-    console.log(this.checkLogin(url));
     return this.checkLogin(url);
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log('canActivateChild run');
     return this.canActivate(route, state);
   }
 

@@ -1,3 +1,10 @@
+@media screen and (max-width: 100%) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
 ul li {
   list-style: none;
 }

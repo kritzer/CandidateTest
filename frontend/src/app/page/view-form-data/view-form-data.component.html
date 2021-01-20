@@ -2,9 +2,10 @@
 <div  class="mx-auto" style="padding: 5%;">
   <mat-card-title fxLayoutAlign="center"> {{ title | uppercase }}</mat-card-title>
   <br>
+  <label>{{searchTitle}}</label>
     <div style="overflow:auto;">
-      <input type="text" [(ngModel)]="search" 
-            placeholder="ใส่คำที่ต้องการค้นหา" />
+      <input type="text" [value]="search" (keyup)="keyInput($event.target.value)"/>
+      <button (click)="searchFormData()">ค้นหา</button>
       <table style="width:100%">
         <tr>
           <th>Firstname</th>
@@ -12,13 +13,14 @@
           <th>Age</th>
           <th>Job</th>
         </tr>
-        <tr *ngFor="let item of formData | filter: search">
+        <tr *ngFor="let item of formData">
           <td>{{item.firstName}}</td>
           <td>{{item.lastName}}</td>
-          <td>{{item.age}}</td>
+          <td [ngClass]="{'green' : item.age % 2 == 0}">{{item.age}}</td>
           <td>{{item.job}}</td>
         </tr>
       </table>
     </div>
 </div>
 <app-footer></app-footer>
+<!-- | filter: search -->
