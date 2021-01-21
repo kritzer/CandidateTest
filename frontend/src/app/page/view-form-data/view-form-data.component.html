@@ -5,8 +5,9 @@
   <label>{{searchTitle}}</label>
     <div style="overflow:auto;">
       <input type="text" [value]="search" (keyup)="keyInput($event.target.value)"/>
-      <button (click)="searchFormData()">ค้นหา</button>
+      <button (click)="loadFormData()">ค้นหา</button>
       <table style="width:100%">
+        <caption>All FormData Table</caption>
         <tr>
           <th id="firstName">FirstName</th>
           <th id="lastName">LastName</th>
