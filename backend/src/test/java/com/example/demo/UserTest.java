@@ -33,75 +33,22 @@ public class UserTest {
     }
 
     @Test
-    void kritzer_UserMustBeOk(){
+    void userMustBeOk(){
 
         User user = new User();
 
         user.setEmail("EmailX@gmail.com");
         user.setUsername("username");
-        user.setPassword("Xpassword");
+        user.setPassword("password");
 
         user  = userRepo.saveAndFlush(user);
         
         Optional<User> found = userRepo.findById(user.getId());
         assertEquals("EmailX@gmail.com",found.get().getEmail());
         assertEquals("username",found.get().getUsername());
-        assertEquals("Xpassword",found.get().getPassword());
+        assertEquals("password",found.get().getPassword());
 
     }
 
-    @Test
-    void kritzer_EmailMustNotBeNull(){
-        User user = new User();
-
-        user.setEmail(null);
-        user.setUsername("usernameX");
-        user.setPassword("Xpassword");
-
-        Set<ConstraintViolation<User>> result = validator.validate(user);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<User> v = result.iterator().next();
-        assertEquals("Email Cannot Be null", v.getMessage());
-        assertEquals("email", v.getPropertyPath().toString());
-  
-    }
-
-    @Test
-    void kritzer_UserNameMustNotBeNull(){
-        User user = new User();
-
-        user.setEmail("EmailX@gmail.com");
-        user.setUsername(null);
-        user.setPassword("Xpassword");
-
-        Set<ConstraintViolation<User>> result = validator.validate(user);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<User> v = result.iterator().next();
-        assertEquals("Username Cannot Be null", v.getMessage());
-        assertEquals("username", v.getPropertyPath().toString());
-  
-    }
-    
-    @Test
-    void kritzer_PasswordMustNotBeNull(){
-        User user = new User();
-
-        user.setEmail("EmailX@gmail.com");
-        user.setUsername("username");
-        user.setPassword(null);
-
-        Set<ConstraintViolation<User>> result = validator.validate(user);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<User> v = result.iterator().next();
-        assertEquals("Password Cannot Be null", v.getMessage());
-        assertEquals("password", v.getPropertyPath().toString());
-  
-    }
 
 }
