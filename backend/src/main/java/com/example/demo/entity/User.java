@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.*;
 
@@ -21,14 +21,14 @@ public class User {
     private Long id;
 
     @Column(unique = true)
-    @NotNull(message = "Email Cannot Be null")
+    @NotEmpty(message = "Email Cannot Be Null")
     private String email;
 
     @Column(unique = true)
-    @NotNull(message = "Username Cannot Be null")
+    @NotEmpty(message = "Username Cannot Be Null")
     private String username;
     
-    @NotNull(message = "Password Cannot Be null")
+    @NotEmpty(message = "Password Cannot Be Null")
     private String password;
 
 }
