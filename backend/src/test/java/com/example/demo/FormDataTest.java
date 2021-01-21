@@ -34,10 +34,10 @@ public class FormDataTest {
     }
 
     @Test
-    void kritzer_FormDataTestMustBeOk(){
+    void formDataTestMustBeOk(){
         FormData formData = new FormData();
 
-        formData.setAge(23);
+        formData.setAge("23");
         formData.setFirstName("Kritsada");
         formData.setLastName("Patchima");
         formData.setJob("Student");
@@ -45,64 +45,10 @@ public class FormDataTest {
         formData  = formDataRepo.saveAndFlush(formData);
 
         Optional<FormData> found = formDataRepo.findById(formData.getId());
-        assertEquals(23,found.get().getAge());
+        assertEquals("23",found.get().getAge());
         assertEquals("Kritsada",found.get().getFirstName());
         assertEquals("Patchima",found.get().getLastName());
         assertEquals("Student",found.get().getJob());
-    }
-
-    @Test
-    void kritzer_FirstNameMustNotBeNull(){
-        FormData formData = new FormData();
-        formData.setAge(23);
-        formData.setFirstName(null);
-        formData.setLastName("Patchima");
-        formData.setJob("Student");
-
-        Set<ConstraintViolation<FormData>> result = validator.validate(formData);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<FormData> v = result.iterator().next();
-        assertEquals("FirstName Must not be null", v.getMessage());
-        assertEquals("firstName", v.getPropertyPath().toString());
-  
-    }
-
-    @Test
-    void kritzer_LastNameMustNotBeNull(){
-        FormData formData = new FormData();
-        formData.setAge(23);
-        formData.setFirstName("Kritsada");
-        formData.setLastName(null);
-        formData.setJob("Student");
-
-        Set<ConstraintViolation<FormData>> result = validator.validate(formData);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<FormData> v = result.iterator().next();
-        assertEquals("LastName Must not be null", v.getMessage());
-        assertEquals("lastName", v.getPropertyPath().toString());
-  
-    }
-
-    @Test
-    void kritzer_JobMustNotBeNull(){
-        FormData formData = new FormData();
-        formData.setAge(23);
-        formData.setFirstName("Kritsada");
-        formData.setLastName("Patchima");
-        formData.setJob(null);
-
-        Set<ConstraintViolation<FormData>> result = validator.validate(formData);
-        
-        assertEquals(1, result.size());
-
-        ConstraintViolation<FormData> v = result.iterator().next();
-        assertEquals("Job Must not be null", v.getMessage());
-        assertEquals("job", v.getPropertyPath().toString());
-  
     }
     
 }
