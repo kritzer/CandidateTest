@@ -19,21 +19,20 @@ public class FormDataController {
     private FormDataRepo formRepo;
 
     @GetMapping("/getAllForm")
-    public List<FormData> getAllFormDatas() {
+    public List<FormData> getAllFormData() {
         return formRepo.findAll();
     }
 
     @GetMapping("/search")
-    public List<FormData> getByLastNameOrFirstName(@RequestParam(name = "text") String text) {
+    public List<FormData> searchByText(@RequestParam(name = "text") String text) {
         return formRepo.findByText(text);
     }
 
-    @GetMapping("/getByAge")
-    public List<FormData> getByAge(@RequestParam(name = "age") String age) {
-        List<FormData> sortedList = formRepo.findByAgeOrderByAge(age).stream()
+    @GetMapping("/searchByAge")
+    public List<FormData> searchByAge(@RequestParam(name = "age") String age) {
+        return  formRepo.findByAgeOrderByAge(age).stream()
                 .sorted(Comparator.comparingInt(FormData::getAge))
                 .collect(Collectors.toList());
-        return  sortedList;
     }
 
     @GetMapping("/getByFirstName")
@@ -44,8 +43,8 @@ public class FormDataController {
     @PostMapping("/addFormData")
     public FormData addFormData(@RequestBody Map<String, String> body) {
         FormData newForm = new FormData();
-        newForm.setFirstName(body.get("fname"));
-        newForm.setLastName(body.get("lname"));
+        newForm.setFirstName(body.get("firstName"));
+        newForm.setLastName(body.get("lastName"));
         newForm.setAge(body.get("age"));
         newForm.setJob(body.get("job"));
         return formRepo.save(newForm);

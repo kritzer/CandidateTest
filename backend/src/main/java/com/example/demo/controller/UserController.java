@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepo;
@@ -18,13 +17,8 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping("/getAllUser")
-    public List<User> getAllUser() {
-        return userRepo.findAll();
-    }
-
     @GetMapping("/login")
-    public User getCheck(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
+    public User checkLogin(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
         return userRepo.findCheck(username, password);
     }
 }

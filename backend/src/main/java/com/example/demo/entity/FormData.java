@@ -1,7 +1,8 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.*;
 
@@ -15,16 +16,19 @@ public class FormData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Form_SEQ")
     private Long id;
 
-    @NotNull(message = "FirstName Must not be null")
+    @Size(min = 2, max = 24)
+    @NotEmpty(message = "FirstName Can Not be Null")
     private String firstName;
 
-    @NotNull(message = "LastName Must not be null")
+    @Size(min = 2, max = 24)
+    @NotEmpty(message = "LastName Can Not Be Null")
     private String lastName;
 
-    @NotNull(message = "Age Must Not Be Null")
+    @NotEmpty(message = "Age Can Not Be Null")
     private String age;
 
-    @NotNull(message = "Job Must not be null")
+    @Size(min = 2, max = 24)
+    @NotEmpty(message = "Job Can Not Be Null")
     private String job;
 
     public Integer getAge() {

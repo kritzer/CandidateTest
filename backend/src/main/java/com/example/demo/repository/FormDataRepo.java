@@ -12,8 +12,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface FormDataRepo extends JpaRepository<FormData, Long> {
 
-    //    @Query(value = "SELECT z FROM FormData z Where z.lastName = :lastName or z.firstName = :lastName", nativeQuery = true)
-//เลือกข้อมูลทั้งหมดจาห Form Data โดย z เป็นตัวแทนของข้อมูลที่เลือกมา แล้วดูว่า Param lastName(ที่กำหนดบรรทัดล่าง) เท่ากับ z คอลัมน์ lastName Or firstName หรือไม่
     @Query(value = "SELECT z FROM FormData z Where z.firstName = :text or z.lastName = :text or z.age = :text or z.job = :text")
     List<FormData> findByText(@Param("text") String text);
 
