@@ -8,10 +8,10 @@
       <button (click)="searchFormData()">ค้นหา</button>
       <table style="width:100%">
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Age</th>
-          <th>Job</th>
+          <th id="firstName">FirstName</th>
+          <th id="lastName">LastName</th>
+          <th id="age">Age</th>
+          <th id="job">Job</th>
         </tr>
         <tr *ngFor="let item of formData">
           <td>{{item.firstName}}</td>
