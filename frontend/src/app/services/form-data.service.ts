@@ -15,7 +15,7 @@ export class FormDataService {
     return this.http.get(this.API + '/getAllForm');
   }
 
-  getByText(text): Observable<any> {
+  searchByText(text): Observable<any> {
     return this.http.get(this.API + '/search?text=' + text);
   }
 

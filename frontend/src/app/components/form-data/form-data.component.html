@@ -6,23 +6,23 @@
           <div class="form-group">
             <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
               <mat-label>ชื่อ</mat-label>
-              <input matInput placeholder="ระบุชื่อของคุณ" [(ngModel)]="formData.fname" name="fname">
+              <input matInput placeholder="ระบุชื่อของคุณ"  maxlength="24" minlength="2" [(ngModel)]="formData.firstName" name="firstName" required>
             </mat-form-field>
 
             <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
               <mat-label>นามสกุล</mat-label>
-              <input matInput placeholder="ระบุนามสกุลของคุณ" [(ngModel)]="formData.lname" name="lname">
+              <input matInput placeholder="ระบุนามสกุลของคุณ" maxlength="24" minlength="2" [(ngModel)]="formData.lastName" name="lastName" required>
             </mat-form-field>
           </div>
           <div class="form-group">
             <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
               <mat-label>อายุ</mat-label>
-              <input matInput type="number" placeholder="ระบุอายุของคุณ" [(ngModel)]="formData.age" name="age">
+              <input matInput type="number" placeholder="ระบุอายุของคุณ" min="1" [(ngModel)]="formData.age" name="age" required>
             </mat-form-field>
 
             <mat-form-field class="col-md-6 d-block d-lg-none" appearance="fill">
               <mat-label>งาน</mat-label>
-              <input matInput  placeholder="ระบุงานของคุณ" [(ngModel)]="formData.job" name="job">
+              <input matInput  placeholder="ระบุงานของคุณ" maxlength="16" minlength="4" [(ngModel)]="formData.job" name="job" required>
             </mat-form-field>
           </div>
         <mat-card-actions>

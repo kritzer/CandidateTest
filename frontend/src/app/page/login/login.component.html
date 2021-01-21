@@ -15,7 +15,7 @@
             <label>Password</label>
           </div>
           <div>
-            <input type="password" class="form-control" [(ngModel)]="loginData.password" name="password" value="">
+            <input type="password" class="form-control" minlength="8" maxlength="24" [(ngModel)]="loginData.password" name="password" value="">
           </div>
           <br>
           <mat-action-row>

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginData = new LoginData();
-    this.checklogin();
+    this.checkLogin();
   }
   login(loginData) {
     if (loginData.username) {
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginData.username = null;
     this.loginData.password = null;
   }
-  checklogin() {
+  checkLogin() {
     if (localStorage.getItem('userData') !== null) {
       this.router.navigate(['']);
     }

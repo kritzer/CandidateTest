@@ -21,40 +21,32 @@ export class ViewFormDataComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.searchFormData();
+    this.loadFormData();
   }
-  getFormData() {
+  loadAllFormData() {
     this.formDataService.getAllFormData().subscribe( data => {
       this.formData = data as UserInfo[];
     });
   }
-  searchFormData() {
+  loadFormData() {
     this.newValue = this.search;
     if ( !this.newValue ) {
-      this.getFormData();
+      this.loadAllFormData();
     } else {
-      this.getSearch( this.newValue );
+      this.searchByText( this.newValue );
     }
   }
-  getSearch( newValue ) {
-    this.formDataService.getByText( newValue ).subscribe( res => {
+  searchByText( newValue ) {
+    this.formDataService.searchByText( newValue ).subscribe( res => {
       if ( res && res.length ) {
         this.formData = [];
         this.formData = res as UserInfo[];
       } else {
         this.openSnackBar( this.message, this.close );
-        // this.getFormByLastName(newValue);
       }
     });
   }
-  // getFormByLastName(newValue) {
-  //   this.formDataService.getByLastNameOrFirstName(newValue, '').subscribe( res => {
-  //     if (res && res.length) {
-  //       this.formData = [];
-  //       this.formData = res as UserInfo[];
-  //     }
-  //   });
-  // }
+
   openSnackBar( message: string, action: string ) {
     this.snackBar.open( message, action, {
       duration: 5000,

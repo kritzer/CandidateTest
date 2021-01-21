@@ -13,43 +13,44 @@ export class FormDataComponent implements OnInit {
 title = '';
 formData: FormData;
 str: string;
+close = 'ปิด';
+validateErrorMessage = 'กรุณาตรวจสอบข้อมูลในฟอร์ม';
+addSuccess = 'บันทึกสำเร็จ';
   constructor(private formDataService: FormDataService,
               private snackBar: MatSnackBar,
               private router: Router) {
-
   }
   ngOnInit(): void {
     this.formData = new FormData();
   }
-
   onSubmit(form) {
-    this.str = 'ค่าจากฟอร์ม: ' + JSON.stringify(this.formData);
-    this.formDataService.addFormData(form).subscribe( data => {
-      this.openSnackBar('บันทึกสำเร็จ', 'ปิด');
-      this.router.navigate(['/viewFormData']);
-    }, error => {
-        this.openSnackBar(error.message, 'ปิด');
-        this.resetForm();
-      }
-      );
+    this.validateForm(form);
   }
-
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 5000,
     });
   }
-  resetForm() {
-    this.formData.fname = null;
-    this.formData.lname = null;
-    this.formData.age = null;
-    this.formData.job = null;
- }
-
+  validateForm(form) {
+    const checkForm = form.firstName && form.lastName && form.age >= 1 && form.job;
+    if (checkForm) {
+      this.addFormData(form);
+    } else {
+      this.openSnackBar(this.validateErrorMessage, this.close);
+    }
+  }
+  addFormData(form) {
+    this.formDataService.addFormData(form).subscribe( data => {
+      this.openSnackBar(this.addSuccess, this.close);
+      this.router.navigate(['/viewFormData']);
+    }, error => {
+      this.openSnackBar(error.message, this.close);
+      } );
+  }
 }
 class FormData {
-  fname: string;
-  lname: string;
+  firstName: string;
+  lastName: string;
   age: number;
   job: string;
 }
